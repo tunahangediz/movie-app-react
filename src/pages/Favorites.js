@@ -18,7 +18,7 @@ function Favorites() {
   console.log(favoriteMovies);
 
   return (
-    <div className="bg-black h-full">
+    <div className="bg-black min-h-screen">
       <Navbar />
       <div className=" my-container pt-28 bg-black grid md:grid-cols-2 lg:grid-cols-4 items-center  justify-items-center gap-12">
         {favoriteMovies.map((el) => (
