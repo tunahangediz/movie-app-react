@@ -33,7 +33,7 @@ function Details() {
   }, []);
 
   return (
-    <div>
+    <div className="sm:h-full w-full">
       {error && <p>{error}</p>}
       {isPending && <p>Loading....</p>}
       {data && <MovieDetailsCard movie={data} />}

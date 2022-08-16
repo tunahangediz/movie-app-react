@@ -41,14 +41,14 @@ function MovieDetailsCard({ movie }) {
   };
   return (
     <div
-      className="bg-cover w-screen h-screen  "
+      className="bg-cover w-full min-h-screen"
       style={{
         backgroundImage:
           movie.backdrop_path &&
           `url(https://image.tmdb.org/t/p/original${movie.backdrop_path})`,
       }}
     >
-      <div className="details-card">
+      <div className="details-card min-h-screen">
         <div className="my-container ">
           <Link className="text-white hover:text-gray-400" to="/">
             Back to main dashboard

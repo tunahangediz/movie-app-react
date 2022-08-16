@@ -1,5 +1,5 @@
 .my-container {
-  @apply max-w-screen-2xl px-4 mx-auto lg:px-8;
+  @apply max-w-screen-2xl px-4 mx-auto lg:px-8 h-full;
 }
 
 html,
@@ -28,5 +28,15 @@ body,
     rgba(0, 0, 0, 0.9) 43%,
 
     rgba(255, 255, 255, 0) 100%
+  );
+}
+
+.home-overlay {
+  background: rgb(0, 0, 0);
+  background: linear-gradient(
+    111deg,
+    rgba(0, 0, 0, 0.9) 03%,
+
+    rgba(255, 255, 255, 0) 95%
   );
 }

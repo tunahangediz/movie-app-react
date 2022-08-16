@@ -27,25 +27,25 @@ function Home() {
   //     </div>
   //   );
   // }
+
+  console.log("RAndom", randomNum);
   return (
-    <>
+    <div className="relative  min-h-full">
       <img
         src={
           randomMovie &&
-          `https://image.tmdb.org/t/p/original${data[randomNum].backdrop_path}`
+          `https://image.tmdb.org/t/p/original${randomMovie.backdrop_path}`
         }
-        className="absolute object-cover w-full h-full  image -z-10"
+        className="absolute object-cover h-full w-full -z-10 "
         loading="lazy"
       />
-
-      <div className="h-full  ">
-        <Navbar />
-
-        <div className="flex flex-col justify-between h-full my-container">
+      <Navbar />
+      <div className=" home-overlay min-h-screen ">
+        <div className="flex flex-col justify-between min-h-screen my-container">
           <div className=" pt-36 mb-8 lg:text-left text-center  ">
             <div className=" lg:max-w-md flex flex-col gap-4">
               <h1 className="text-6xl font-bold text-white  ">
-                {randomMovie.title || randomMovie.name}
+                {randomMovie.title}
               </h1>
               {/* <p className=" text-gray-400  ">A Disney Original Film 2021</p> */}
               <div>
@@ -60,7 +60,7 @@ function Home() {
           {data && <TrendSwiper trends={data} />}
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
