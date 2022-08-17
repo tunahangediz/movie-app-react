@@ -12,6 +12,7 @@ import {
 import { db } from "../firebase/config";
 import { authContext } from "../context/authContext/AuthContextProvider";
 import { movieContext } from "../context/movieContext/movieContext";
+import { Link } from "react-router-dom";
 
 function Home() {
   const api = `https://api.themoviedb.org/3/trending/movie/week?api_key=${process.env.REACT_APP_API_KEY}`;
@@ -49,9 +50,12 @@ function Home() {
               </h1>
               {/* <p className=" text-gray-400  ">A Disney Original Film 2021</p> */}
               <div>
-                <button className="py-2 px-12   text-white font-medium bg-purple-500 hover:bg-purple-700 rounded-full">
+                <Link
+                  to={`/${randomMovie.id}`}
+                  className="py-2 px-12   text-white font-medium bg-purple-500 hover:bg-purple-700 rounded-full"
+                >
                   PLAY
-                </button>
+                </Link>
               </div>
             </div>
           </div>

@@ -1,3 +1,4 @@
+import { StarIcon } from "@heroicons/react/solid";
 import { deleteDoc, doc } from "firebase/firestore";
 import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -76,22 +77,25 @@ function MovieDetailsCard({ movie, videoKey }) {
                 }}
                 src={`https://www.youtube.com/embed/${videoKey}`}
                 title="YouTube video player"
-                frameborder="0"
+                frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen
+                allowFullScreen={"true"}
               ></iframe>
             )}
           </div>
           {checkFavorites ? (
             <button
-              className="text-white"
+              className=" p-1 bg-red-500 flex  items-center gap-2 rounded"
               onClick={() => deleteFavorite(checkFavorites.doc_id)}
             >
-              delete from Fav
+              <StarIcon className="h-6 w-6   text-yellow-300 rounded-full  top-2 right-2 "></StarIcon>
             </button>
           ) : (
-            <button className="text-white" onClick={addFavorite}>
-              ADD FAVORİTE
+            <button
+              className=" p-1 bg-white flex  items-center gap-2 rounded"
+              onClick={addFavorite}
+            >
+              <StarIcon className="h-6 w-6   text-yellow-400 rounded-full  top-2 right-2 "></StarIcon>
             </button>
           )}
         </div>

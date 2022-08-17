@@ -10,6 +10,7 @@ import { db } from "../firebase/config";
 import { authContext } from "../context/authContext/AuthContextProvider";
 import Navbar from "../components/Navbar";
 import { movieContext } from "../context/movieContext/movieContext";
+import { BeakerIcon, StarIcon } from "@heroicons/react/solid";
 function Favorites() {
   //   const [favoriteMovies, setFavoriteMovies] = useState([]);
   const { user } = useContext(authContext);
@@ -22,7 +23,7 @@ function Favorites() {
       <Navbar />
       <div className=" my-container pt-28 bg-black grid md:grid-cols-2 lg:grid-cols-4 items-center  justify-items-center gap-12">
         {favoriteMovies.map((el) => (
-          <div className="w-full">
+          <div className="w-full relative">
             <div className="">
               <img
                 className="w-full h-full object-cover"
@@ -32,6 +33,8 @@ function Favorites() {
             </div>
 
             <h5 className="text-white"> {el.movie.title}</h5>
+
+            <StarIcon className="h-6 w-6 hover:bg-red-400 hover:text-white bg-white text-yellow-400 rounded-full absolute top-2 right-2 "></StarIcon>
           </div>
         ))}
       </div>

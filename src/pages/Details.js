@@ -38,9 +38,10 @@ function Details() {
       const videoApi = `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${process.env.REACT_APP_API_KEY}`;
       try {
         const response = await axios.get(videoApi);
-        setVideoKey(response.data.results[2].key);
+        const key = response.data.results[0].key;
+        setVideoKey(key);
 
-        console.log(response.data.results[2].key);
+        console.log(response.data.results[2].key || response.results[0].key);
       } catch (error) {
         console.log(error.message);
       }

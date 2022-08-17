@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import "./App.css";
 import DropDown from "./components/DropDown";
 import Navbar from "./components/Navbar";
@@ -11,7 +11,8 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 
 function App() {
-  const { isAuthReady } = useContext(authContext);
+  const { isAuthReady, user } = useContext(authContext);
+
   return (
     <div className="App h-full ">
       {isAuthReady && (
@@ -20,7 +21,10 @@ function App() {
           <Route path="/:id" element={<Details />} />
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<Signup />} />
-          <Route path="favorites" element={<Favorites />} />
+          <Route
+            path="favorites"
+            element={user ? <Favorites /> : <Navigate replace to="/login" />}
+          />
         </Routes>
       )}
     </div>
