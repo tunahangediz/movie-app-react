@@ -70,7 +70,7 @@ function MovieDetailsCard({ movie, videoKey }) {
               <iframe
                 style={{
                   width: "100%",
-                  maxWidth: "500px",
+                  maxWidth: "540px",
                   height: "100%",
                   minHeight: "320px",
                 }}
