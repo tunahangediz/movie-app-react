@@ -7,7 +7,7 @@ import { db } from "../firebase/config";
 
 import useFirestore from "../hooks/useFirestore";
 
-function MovieDetailsCard({ movie }) {
+function MovieDetailsCard({ movie, videoKey }) {
   const navigate = useNavigate();
   const { user } = useContext(authContext);
 
@@ -53,8 +53,8 @@ function MovieDetailsCard({ movie }) {
           <Link className="text-white hover:text-gray-400" to="/">
             Back to main dashboard
           </Link>
-          <div className=" drop-shadow-2xl py-8">
-            <div className="max-w-2xl sm:flex sm:flex-row gap-12  flex flex-col items-center">
+          <div className="  py-8 xl:flex justify-between w-full flex-wrap ">
+            <div className="max-w-xl sm:flex sm:flex-row gap-12  flex flex-col items-center">
               <img
                 className=" w-48"
                 src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
@@ -66,6 +66,21 @@ function MovieDetailsCard({ movie }) {
                 <p className="text-gray-300 py-4">{movie.overview}</p>
               </div>
             </div>
+            {videoKey && (
+              <iframe
+                style={{
+                  width: "100%",
+                  maxWidth: "500px",
+                  height: "100%",
+                  minHeight: "320px",
+                }}
+                src={`https://www.youtube.com/embed/${videoKey}`}
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              ></iframe>
+            )}
           </div>
           {checkFavorites ? (
             <button

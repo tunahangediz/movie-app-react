@@ -12,6 +12,7 @@ function Details() {
   const [error, setError] = useState(null);
   const [data, setData] = useState([]);
   const [isPending, setIsPending] = useState(false);
+  const [videoKey, setVideoKey] = useState(null);
 
   useEffect(() => {
     const fetch = async () => {
@@ -32,11 +33,26 @@ function Details() {
     fetch();
   }, []);
 
+  useEffect(() => {
+    const fetch = async () => {
+      const videoApi = `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${process.env.REACT_APP_API_KEY}`;
+      try {
+        const response = await axios.get(videoApi);
+        setVideoKey(response.data.results[2].key);
+
+        console.log(response.data.results[2].key);
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+
+    fetch();
+  });
   return (
     <div className="sm:h-full w-full">
       {error && <p>{error}</p>}
       {isPending && <p>Loading....</p>}
-      {data && <MovieDetailsCard movie={data} />}
+      {data && <MovieDetailsCard movie={data} videoKey={videoKey} />}
     </div>
   );
 }
