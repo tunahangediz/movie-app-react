@@ -20,8 +20,9 @@ function Login() {
         </h1>
 
         <p className="max-w-md mx-auto mt-4 text-center text-gray-500">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati
-          sunt dolores deleniti inventore quaerat mollitia?
+          <span className="text-2xl">Test Hesabı</span> <br />
+          <strong> email: test@example.com </strong>
+          <br /> <strong> password: 123456 </strong>
         </p>
 
         <form
