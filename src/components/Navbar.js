@@ -16,10 +16,10 @@ function Navbar() {
       <nav className="max-w-screen-2xl px-4 mx-auto lg:px-8 flex items-center justify-between text-white ">
         <div className="flex gap-12">
           <Link to="/">HOME</Link>
-          <ul className="flex gap-4">
+          {/* <ul className="flex gap-4">
             <li>Movies</li>
             <li>Series</li>
-          </ul>
+          </ul> */}
         </div>
 
         {user && (

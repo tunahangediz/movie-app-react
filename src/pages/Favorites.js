@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import {
   collection,
+  deleteDoc,
+  doc,
   getDocs,
   onSnapshot,
   query,
@@ -11,10 +13,20 @@ import { authContext } from "../context/authContext/AuthContextProvider";
 import Navbar from "../components/Navbar";
 import { movieContext } from "../context/movieContext/movieContext";
 import { BeakerIcon, StarIcon } from "@heroicons/react/solid";
+import useFirestore from "../hooks/useFirestore";
 function Favorites() {
   //   const [favoriteMovies, setFavoriteMovies] = useState([]);
   const { user } = useContext(authContext);
   const { favorites: favoriteMovies, dispatch } = useContext(movieContext);
+  const { success, error, isPending, addDocument, deleteDocument } =
+    useFirestore("favorites");
+  const deleteFavorite = async (id) => {
+    if (favoriteMovies.length === 1) {
+      dispatch({ type: "SET_FAVORITES", payload: [] });
+    }
+    console.log(id);
+    await deleteDoc(doc(db, "favorites", id));
+  };
 
   console.log(favoriteMovies);
 
@@ -34,7 +46,10 @@ function Favorites() {
 
             <h5 className="text-white"> {el.movie.title}</h5>
 
-            <StarIcon className="h-6 w-6 hover:bg-red-400 hover:text-white bg-white text-yellow-400 rounded-full absolute top-2 right-2 "></StarIcon>
+            <StarIcon
+              onClick={() => deleteFavorite(el.doc_id)}
+              className="h-6 w-6 hover:bg-red-400 hover:text-white bg-white text-yellow-400 rounded-full absolute top-2 right-2 "
+            ></StarIcon>
           </div>
         ))}
       </div>

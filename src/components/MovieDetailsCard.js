@@ -55,11 +55,34 @@ function MovieDetailsCard({ movie, videoKey }) {
             Back to main dashboard
           </Link>
           <div className="  py-8 xl:flex justify-between w-full flex-wrap ">
-            <div className="max-w-xl sm:flex sm:flex-row gap-12  flex flex-col items-center">
-              <img
-                className=" w-48"
-                src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
-              />
+            <div className="max-w-2xl sm:flex sm:flex-row  gap-10 flex flex-col items-center">
+              <div className="w-full h-full relative flex flex-col items-center  ">
+                <img
+                  className=" w-64 h-full object-cover"
+                  src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+                />
+                <div className="w-64 bg-black py-2 flex items-center justify-between text-white">
+                  <span></span>
+                  {checkFavorites ? (
+                    <button
+                      className=" p-1  flex   right-0 top-0 items-center gap-2 rounded-full   "
+                      onClick={() => deleteFavorite(checkFavorites.doc_id)}
+                    >
+                      Favorite
+                      <StarIcon className="h-6 w-6 bg-red-400 text-yellow-300  rounded-full  "></StarIcon>
+                    </button>
+                  ) : (
+                    <button
+                      className=" p-1  flex  right-0 top-0 items-center gap-2 rounded-full"
+                      onClick={addFavorite}
+                    >
+                      Favorite
+                      <StarIcon className="h-6 w-6 hover:bg-red-400 hover:text-white bg-white text-slate-500 rounded-full "></StarIcon>
+                    </button>
+                  )}
+                </div>
+              </div>
+
               <div className="drop-shadow-2xl text-center sm:text-left">
                 <h1 className="text-6xl font-bold text-white  ">
                   {movie.title || movie.name}
@@ -83,21 +106,6 @@ function MovieDetailsCard({ movie, videoKey }) {
               ></iframe>
             )}
           </div>
-          {checkFavorites ? (
-            <button
-              className=" p-1 bg-red-500 flex  items-center gap-2 rounded"
-              onClick={() => deleteFavorite(checkFavorites.doc_id)}
-            >
-              <StarIcon className="h-6 w-6   text-yellow-300 rounded-full  top-2 right-2 "></StarIcon>
-            </button>
-          ) : (
-            <button
-              className=" p-1 bg-white flex  items-center gap-2 rounded"
-              onClick={addFavorite}
-            >
-              <StarIcon className="h-6 w-6   text-yellow-400 rounded-full  top-2 right-2 "></StarIcon>
-            </button>
-          )}
         </div>
       </div>
     </div>
