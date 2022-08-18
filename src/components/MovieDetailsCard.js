@@ -56,7 +56,7 @@ function MovieDetailsCard({ movie, videoKey }) {
           <Link className="text-white hover:text-gray-400" to="/">
             Back to main dashboard
           </Link>
-          <div className="  py-8 xl:flex justify-between w-full flex-wrap ">
+          <div className="  py-8 xl:flex justify-between w-full flex-wrap items-center  ">
             <div className="max-w-2xl sm:flex sm:flex-row  gap-10 flex flex-col items-center">
               <div className="w-full h-full relative flex flex-col items-center  ">
                 <img

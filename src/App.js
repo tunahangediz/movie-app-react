@@ -8,6 +8,7 @@ import Details from "./pages/Details";
 import Favorites from "./pages/Favorites";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
+import Movies from "./pages/Movies";
 import Signup from "./pages/Signup";
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
           <Route path="/:id" element={<Details />} />
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<Signup />} />
+          <Route path="movies" element={<Movies />} />
           <Route
             path="favorites"
             element={user ? <Favorites /> : <Navigate replace to="/login" />}
