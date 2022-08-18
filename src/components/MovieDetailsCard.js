@@ -12,13 +12,15 @@ function MovieDetailsCard({ movie, videoKey }) {
   const navigate = useNavigate();
   const { user } = useContext(authContext);
 
-  const { favorites, addMovieFavorite } = useContext(movieContext);
+  const { favorites, addMovieFavorite, dispatch } = useContext(movieContext);
   const { success, error, isPending, addDocument, deleteDocument } =
     useFirestore("favorites");
   const checkFavorites = favorites.find((fav) => fav.movie.id === movie.id);
 
   const deleteFavorite = async (id) => {
-    console.log(id);
+    if (favorites.length === 1) {
+      dispatch({ type: "SET_FAVORITES", payload: [] });
+    }
     await deleteDoc(doc(db, "favorites", id));
   };
 
