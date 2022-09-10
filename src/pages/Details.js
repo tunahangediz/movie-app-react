@@ -1,10 +1,7 @@
 import axios from "axios";
-import React from "react";
-import { useEffect } from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import MovieDetailsCard from "../components/MovieDetailsCard";
-import useFetch from "../hooks/useFetch";
 
 function Details() {
   const { id } = useParams();

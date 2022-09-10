@@ -1,18 +1,10 @@
-import React, { useContext, useEffect, useState } from "react";
-import {
-  collection,
-  deleteDoc,
-  doc,
-  getDocs,
-  onSnapshot,
-  query,
-  where,
-} from "firebase/firestore";
-import { db } from "../firebase/config";
-import { authContext } from "../context/authContext/AuthContextProvider";
+import { StarIcon } from "@heroicons/react/solid";
+import { deleteDoc, doc } from "firebase/firestore";
+import React, { useContext } from "react";
 import Navbar from "../components/Navbar";
+import { authContext } from "../context/authContext/AuthContextProvider";
 import { movieContext } from "../context/movieContext/movieContext";
-import { BeakerIcon, StarIcon } from "@heroicons/react/solid";
+import { db } from "../firebase/config";
 import useFirestore from "../hooks/useFirestore";
 function Favorites() {
   //   const [favoriteMovies, setFavoriteMovies] = useState([]);
