@@ -1,18 +1,8 @@
+import React from "react";
+import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import TrendSwiper from "../components/TrendSwiper";
 import useFetch from "../hooks/useFetch";
-import React, { useContext, useEffect, useState } from "react";
-import {
-  collection,
-  getDocs,
-  onSnapshot,
-  query,
-  where,
-} from "firebase/firestore";
-import { db } from "../firebase/config";
-import { authContext } from "../context/authContext/AuthContextProvider";
-import { movieContext } from "../context/movieContext/movieContext";
-import { Link } from "react-router-dom";
 
 function Home() {
   const api = `https://api.themoviedb.org/3/trending/movie/week?api_key=${process.env.REACT_APP_API_KEY}`;
